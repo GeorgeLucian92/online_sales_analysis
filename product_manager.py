@@ -19,6 +19,13 @@ class ProductManager:
                 return p
         return None
 
+    def remove_product_by_name(self, name: str) -> bool:
+        p = self.find_product(name)
+        if p:
+            self.products.remove(p)
+            return True
+        return False
+
     def update_product_quantity(self, name: str, new_quantity: int) -> bool:
         p = self.find_product(name)
         if p:
