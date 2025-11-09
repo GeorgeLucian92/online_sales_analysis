@@ -1,0 +1,15 @@
+# ignore config files and secrets
+config.json
+# ignore screenshots (toate imaginile folosite ca capturi)
+*.png
+*.jpg
+*.jpeg
+*_screenshot*
+screenshots/
+# Python artefacts
+__pycache__/
+*.pyc
+.env
+venv/
+.DS_Store
+Thumbs.db
