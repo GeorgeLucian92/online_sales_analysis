@@ -1,5 +1,7 @@
+import random
 from product import Product
 from product_manager import ProductManager
+from cart import Cart
 
 def seed_products(pm: ProductManager):
     pm.add_product(Product("Tricou", 49.99, 10))
@@ -8,13 +10,24 @@ def seed_products(pm: ProductManager):
     pm.add_product(Product("Sosete (pereche)", 9.99, 50))
     pm.add_product(Product("Geacă (MAIN)", 399.00, 2))
 
-def main():
+def demo():
     pm = ProductManager()
     seed_products(pm)
-    print("=== Produse în inventar (fuzionat: main + add-product-removal) ===")
-
+    print("=== Produse în inventar (add-cart branch) ===")
     print(pm.display_all())
     print(f"Valoarea totală a inventarului: {pm.total_inventory_value():.2f} RON")
 
+    # Cart demo
+    cart = Cart()
+    available = pm.list_products()
+    n = min(3, len(available))
+    chosen = random.sample(available, n)
+    for p in chosen:
+        q = random.randint(1, min(2, p.quantity if p.quantity>0 else 1))
+        cart.add_to_cart(p, q)
+
+    print("=== Conținut coș ===")
+    print(cart.display_cart())
+
 if __name__ == "__main__":
-    main()
+    demo()
