@@ -11,7 +11,7 @@ def seed_products(pm: ProductManager):
 def main():
     pm = ProductManager()
     seed_products(pm)
-    print("=== Produse în inventar ===")
+    print("=== Lista actuală de produse (branch main) ===")
     print(pm.display_all())
     print(f"Valoarea totală a inventarului: {pm.total_inventory_value():.2f} RON")
 
